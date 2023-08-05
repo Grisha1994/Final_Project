@@ -1,0 +1,95 @@
+.card{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 246px;
+    border-top: 1px solid black;
+    transition: 0.5s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card:last-child{
+    border-bottom: 1px solid black;
+}
+
+.card .img{
+    height: 166px;
+    width: 192px;
+    border-radius: 20px; 
+}
+
+.info{
+    width: 320px;
+    height: 166px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.info p{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.count{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+    gap: 20px;
+    width: 140px;
+    border-radius: 12px;
+    padding: 10px 15px; 
+}
+
+.count p{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.count button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.price{
+    display: flex;
+    align-items: center;
+    gap: 70px;
+    width: 246px;
+}
+
+.price .discont_price{
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.price .price_noSale{
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.price .price{
+    color: #8B8B8B;
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: line-through;
+}
+
+
+.btn{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 166px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
