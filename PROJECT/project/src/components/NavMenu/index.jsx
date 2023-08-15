@@ -7,21 +7,25 @@ import Container from '../UI/Container'
 import { NavLink } from 'react-router-dom'
 import { useBasketProducts } from '../hooks/useBasketProducts'
 import { CgMenu } from 'react-icons/cg';
+import { useState } from 'react'
 
 export default function NavMenu() {
 
     const classFunction = ({isActive}) => isActive ? s.active : '';
-    // const style = (color === 'balck' ? 'black' : 'white');
-
+    
     const result = useBasketProducts();
     const productCount = result.reduce((acc) => acc + 1, 0);
 
     const linksElem = useRef();
-
     const handler = () => {
       const target_links = linksElem.current;
-      target_links.classList.toggle(s.active = s.active ? s.active : '');
+      target_links.classList.toggle(s.active = s.active ? s.active  : '');
     }
+
+    const [isActive, setIsActive] = useState(false);
+    const handlerMenu = () => {
+      setIsActive(!isActive)
+    };
 
   return (
     <nav className={s.nav}>
@@ -51,8 +55,12 @@ export default function NavMenu() {
                             </div>
                         </NavLink>
                     </div>
-
-                    <CgMenu onClick={handler} className={s.menu}/>
+                    
+                    <div onClick={handlerMenu}>
+                        <CgMenu onClick={handler} ref={linksElem} 
+                        className={isActive ? `${s.menu} ${s.active}` : s.menu}/>
+                    </div>
+                    
 
                     <NavLink to='/basket' className={s.basket}>
                         <FontAwesomeIcon className={s.icon} icon={faBasketShopping} />
@@ -64,3 +72,6 @@ export default function NavMenu() {
     </nav>
   )
 }
+
+
+

@@ -13,7 +13,10 @@ export default function ProductsContainer() {
   return (
     <section>
       <Container className={s.container} >
-        <h2>All products</h2>
+        <div className={s.title}>
+          <h2>All products</h2>
+        </div>
+        
         <Search />
         <Products products={products} />
       </Container>

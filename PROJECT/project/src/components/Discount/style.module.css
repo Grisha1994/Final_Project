@@ -3,14 +3,17 @@
 }
 
 .discount{
-    display: flex;
-    align-items: center;
-    gap: 200px;
+    /* display: flex;
+    align-items: center; */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    /* gap: 200px; */
     
 }
 
 .discount img{
     padding: 27px 0 0 90px;
+    transition: 0.5s;
 }
 
 .discount_info{
@@ -18,9 +21,10 @@
     flex-direction: column;
     gap: 46px;
     width: 473px;
+    transition: 0.5s;
 }
 
-.discount_info .title{
+.title{
     display: flex;
     flex-direction: column;
     height: 160px;
@@ -38,13 +42,13 @@
     letter-spacing: 1.6px;
 }
 
-.discount_info .discount_get{
+.discount_get{
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
 
-.discount_info .discount_get input{
+.discount_get input{
     width: 473px;
     height: 75px;
     border-radius: 25px;
@@ -54,7 +58,7 @@
     font-size: 18px;
 }
 
-.discount_info .discount_get button{
+.discount_get button{
     width: 473px;
     height: 75px;
     border-radius: 25px;
@@ -66,4 +70,69 @@
     font-size: 28px;
     font-weight: 700;
     letter-spacing: 0.862px;
+}
+
+
+@media(max-width: 1200px){
+    .discount img{
+        padding: 27px 0 0 0px;
+    }
+}
+
+@media(max-width: 1050px){
+    .discount img{
+        display: none;
+    }
+
+    .discount_get{
+        padding-bottom: 63px;
+    }
+
+    .discount_info{
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media(max-width: 560px){
+    .discount_info{
+        gap: 0;
+    }
+
+    .title{
+        height: 120px;
+    }
+
+    .title h2{
+        font-size: 60px;
+        letter-spacing: 0;
+    }
+    
+    .title p{
+        font-size: 28px;
+        letter-spacing: 0;
+    }
+
+    .discount_get{
+        width: 248px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 20px;
+    }
+
+    .discount_get input{
+        width: 100%;
+        padding-left: 10px;
+        height: 45px;
+        border-radius: 10px;
+    }
+
+    .discount_get button{
+        width: 100%;
+        height: 45px;
+        border-radius: 10px;
+        font-size: 28px;
+    }
 }

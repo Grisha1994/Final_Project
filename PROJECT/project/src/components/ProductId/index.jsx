@@ -19,28 +19,29 @@ export default function ProductId({id, discont_price, price, image, title, descr
 
             <div className={s.info}>
                 <div className={s.item_info}>
-                <div className={s.item_price}>
+                    <div className={s.item_price}>
+                        {
+                            discont_price !== null 
+                            ? <div className={s.discont_price}>{discont_price}<p>$</p></div> 
+                            : <div className={s.price_noSale}>{price}<p>$</p></div>
+                        }
+                    </div>
+                
                     {
-                        discont_price !== null 
-                        ? <div className={s.discont_price}>{discont_price}<p>$</p></div> 
-                        : <div className={s.price_noSale}>{price}<p>$</p></div>
+                        discont_price === null ? '' : <p className={s.price}>{price}$</p>
+                    }
+                    {
+                        discont_price === null ? '' : <p className={s.sale}>-{(((price - discont_price) / price) * 100).toFixed(2)}%</p>
                     }
                 </div>
-             
-                {
-                    discont_price === null ? '' : <p className={s.price}>{price}$</p>
-                }
-                {
-                    discont_price === null ? '' : <p className={s.sale}>-{(((price - discont_price) / price) * 100).toFixed(2)}%</p>
-                }
-                </div> 
+
                 <button className={s.btn} onClick={() => dispatch(basket(id)) && toast.success("Add to cart!")}>To cart</button>
+                
                 <div className={s.description}>
-                    <p>Description</p>
-                    <p>{description}</p>
+                        <p>Description</p>
+                        <p>{description}</p>
                 </div>
             </div>
-            
         </div> 
         <ToastContainer
             position="top-center"

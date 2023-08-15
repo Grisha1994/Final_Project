@@ -9,7 +9,7 @@ export default function NewSeason() {
         <Container className={s.container}>
             <div className={s.container_sale}>
                 <div className={s.sale}>
-                    <h1 className={s.h1}>
+                    <h1 className={s.title}>
                         <span>Sale</span>
                         <span>New season</span>    
                     </h1>

@@ -20,7 +20,7 @@ export default function Categories({categories}) {
             ?<Loading/>
             :state.status === 'rejected'
             ?<img src={img} alt="" />
-            :categories.map(item => <CategoriesItem key={item.id} {...item} />)
+            :categories.map(item => <CategoriesItem className={s.card} key={item.id} {...item} />)
         }
     </div> 
   )

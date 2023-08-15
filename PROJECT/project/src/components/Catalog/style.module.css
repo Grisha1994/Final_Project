@@ -1,5 +1,6 @@
 .container{
     padding: 40px 0 110px;
+    transition: 0.5s;
 }
 
 .catalog{
@@ -24,4 +25,28 @@
     box-shadow:
     0.3em 0.3em 1em rgba(0, 0, 0, 0.5);
 }
+
+@media(max-width: 1470px){
+    .container{
+        padding: 40px 20px 110px;
+    }
+}
+
+@media(max-width:450px){
+    .catalog{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        column-gap: 96px;
+        margin-bottom: 20px;
+        gap: 10px;
+    }
+
+    .btn{
+        width: 162px;
+        text-align: center;
+    }
+}
+
+
 

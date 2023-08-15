@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import s from './style.module.css'
 import Container from '../UI/Container'
 import Products from '../Products'
-import { discont_item, priceAction, sortAction } from '../../store/slice/productsSlice'
+import { discont_item, filterAction, priceAction, sortAction } from '../../store/slice/productsSlice'
 // import { fetchProducts } from '../../store/slice/productsSlice'
 
 export default function Sale() {
@@ -23,6 +23,7 @@ export default function Sale() {
       dispatch(priceAction({min: 0, max: Infinity}));
       dispatch(discont_item(false));
       dispatch(sortAction({value: 'default'}));
+      dispatch(filterAction(''))
     }, [dispatch, products]);
 
   return (

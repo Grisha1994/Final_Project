@@ -32,7 +32,10 @@ const sale = (((price - discont_price) / price) * 100).toFixed(2);
               <p>{title}</p>
           </div>
       </NavLink>
-      <button className={s.btn} onClick={() => dispatch(basket(id)) && toast.success("Add to cart!")}>Add to cart</button>
+      <div className={s.btn_container}>
+        <button className={s.btn} onClick={() => dispatch(basket(id)) && toast.success("Add to cart!")}>Add to cart</button>
+      </div>
+      
     </div>
   )
 }

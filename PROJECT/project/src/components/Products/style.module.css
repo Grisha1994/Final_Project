@@ -1,5 +1,11 @@
 .products{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 337px));
+    grid-template-columns: repeat(auto-fit, minmax(337px, 1fr));
     gap: 30px;
+}
+
+@media(max-width: 400px){
+    .products {
+        grid-template-columns: repeat(auto-fit, minmax(226px, 1fr));
+    }
 }

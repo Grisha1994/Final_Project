@@ -23,12 +23,13 @@ export default function Contacts() {
                         </a>
                     </div>
                 </div>
+
                 <div className={s.footer_address}>
                     <h2>Address</h2>
                     <a href="https://www.leroymerlin.pl/sklepy/warszawa-gigamarket,dh17.html?&&&&ds_rl=1282481&ds_rl=1269260&ds_rl=1282481&ds_rl=1269260&gclid=CjwKCAjw-7OlBhB8EiwAnoOEk3OzDbVYH7l16pTuzfrq5fyDhChbMdNUzvAvi92iHZ1T6h7y1obSIhoCBdsQAvD_BwE&gclsrc=aw.ds">
                         Leroy Merlin Warszawa, al. Jerozolimskie 244, 02-495
                     </a>
-                    <div>
+                    <div className={s.work}>
                         <p>Working Hours:</p>
                         <p>24 hours a day</p>
                     </div>

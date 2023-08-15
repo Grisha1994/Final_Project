@@ -8,24 +8,31 @@
     inset 0 -3em 3em rgba(0, 0, 0, 0.5),
     0 0 0 2px rgb(255, 255, 255),
     0.3em 0.3em 1em rgba(0, 0, 0, 0.5);
+    transition: 0.5s; 
     
 }
 
 .card:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
 
 .card{ 
-    position: relative;
+    /* position: relative; */
     border-radius: 20px; 
     transition: 0.5s; 
+}
+
+.btn_container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .btn{
     position: absolute;
     z-index: 1;
-    margin: 0 29px;
-    width: 279px;
+    /* margin: 0 29px; */
+    width: 84%;
     height: 72px;
     border-radius: 21px;
     border: 2px solid #393;
@@ -81,3 +88,47 @@
     font-size: 20px;
     font-weight: 600;
 }
+
+@media(max-width: 400px){
+    .item img{ 
+        height: 150px;
+        margin-bottom: 0;
+    }
+
+    .btn_container .btn{
+        width: 74%;
+        height: 30px;
+        top: 100px;  
+        border-radius: 11px;
+    }
+
+    .item .item_info{
+        padding: 10px 0 4px;
+    }
+
+    .discont_price{
+        font-size: 20px;
+    }
+        
+    .price_noSale{
+        font-size: 20px;
+    }
+        
+    .price{
+        font-size: 15px;
+    }
+        
+    .sale{
+        font-size: 15px;
+    }
+
+    .item_sale p{
+        font-size: 15px;
+    }
+}
+
+
+
+
+
+

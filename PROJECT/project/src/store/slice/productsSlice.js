@@ -78,10 +78,17 @@ export const productsSlice = createSlice({
             }
             // myConsole(state);
         },
+
+        filterAction(state, {payload}){
+            state.list.forEach(item => {
+                item.show.search = item.title.toLowerCase().includes(payload.toLowerCase())
+            })
+        },
+
         discont_item(state, {payload}){
             // console.log(payload);
             state.list.forEach(item => {item.show.discont = !payload || item.discont_price !== null})
-            
+        
             // myConsole(state);
         },
     
@@ -137,6 +144,6 @@ export const productsSlice = createSlice({
     }
 })
 
-export const { priceAction, sortAction, discont_item } = productsSlice.actions;
+export const { priceAction, sortAction, filterAction, discont_item } = productsSlice.actions;
 
 export default productsSlice.reducer;
