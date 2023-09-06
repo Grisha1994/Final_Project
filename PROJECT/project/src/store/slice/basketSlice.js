@@ -1,4 +1,4 @@
-import {createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const read = () => {
     return JSON.parse(localStorage.getItem('basket')) ?? []
@@ -42,8 +42,6 @@ const read = () => {
             write(state.list)
         },
     },
-
-
 })
 
 export const { 

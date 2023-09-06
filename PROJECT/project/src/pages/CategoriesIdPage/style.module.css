@@ -1,6 +1,6 @@
 .products{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 337px));
+    grid-template-columns: repeat(auto-fill, minmax(337px, 1fr));
     gap: 30px;
 }
 
@@ -9,4 +9,16 @@
     font-size: 40px;
     font-weight: 700;
     padding-bottom: 80px;
+}
+
+@media(max-width: 1470px){
+    .container{
+        padding: 50px 20px 44px;
+    }
+}
+
+@media(max-width: 400px){
+    .products{
+        grid-template-columns: repeat(auto-fill, minmax(226px, 1fr));
+    }
 }

@@ -7,6 +7,12 @@
 body{
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
+  overflow-x: hidden;
+}
+
+.animate{
+  position: absolute;
+  width: 100%;
 }
 
 input{
@@ -18,5 +24,21 @@ a{
   text-decoration: none;
   color: black;
 }
+
+.active a{
+  color: white;
+}
+
+.active p{
+  color: white;
+}
+
+.active h2{
+  color: white;
+}
+
+
+
+
 
 

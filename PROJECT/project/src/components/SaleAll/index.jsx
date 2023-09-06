@@ -6,7 +6,6 @@ import Products from '../Products'
 import Search from '../Search'
 
 export default function SaleAll() {
-
   const list = useSelector(({ products }) => products.list)
 
   const filteredSaleAll = list
@@ -17,7 +16,7 @@ export default function SaleAll() {
     <section>
       <Container className={s.container} >
         <h2>All sales</h2>
-        <Search />
+        <Search visible={false}/>
         <Products products={filteredSaleAll} />
       </Container>
     </section>

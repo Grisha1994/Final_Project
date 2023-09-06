@@ -1,12 +1,20 @@
 .nav{
-    position: sticky;
+    position: fixed;
     z-index: 2;
-    background: white;
     width: 100%;
     top: 0;
-    margin-bottom: 80px;
     height: 118px;
+    background: white;
 }
+
+.active.nav{
+    background: linear-gradient(to right, #339966 0%,#000000 20%, #000000 50%, #000000 80%, #339966 100%);
+}
+
+.botton{
+    margin-bottom: 170px;
+}
+
 .container{
     display: flex;
     justify-content: space-between;
@@ -19,11 +27,19 @@
     0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
 }
 
-
 .nav_catalog{
     display: flex;
     align-items: center;
     gap: 60px;  
+}
+
+.nav_catalog img:hover{
+    border-radius: 50%;
+    font-size: 18px;
+    box-shadow:
+    0.3em 0.3em 1em rgb(64, 123, 61),
+    0 0 0 2px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.5);
 }
 
 .btn{
@@ -37,12 +53,15 @@
     color: white;
     background-color: transparent;
     background: #393;
+ 
+}
+
+.btn:hover{
     box-shadow:
     0.3em 0.3em 1em rgb(64, 123, 61),
     0 0 0 2px rgb(255, 255, 255),
     0.3em 0.3em 1em rgba(0, 0, 0, 0.5);
 }
-
 
 .nav_page{
     display: flex;
@@ -111,6 +130,11 @@
 }
 
 .menu.active{
+    transition: 0.5s;
+    color: white;
+}
+
+.active .menu{
     color: white;
 }
 
@@ -122,13 +146,13 @@
     display: none;
 }
 
-@media(max-width: 1000px){
+@media(max-width: 1170px){
     .nav_page{
         gap: 35px;
     }
 }
 
-@media(max-width: 860px){
+@media(max-width: 1130px){
     .nav_a{
         gap: 10px;
     }
@@ -136,10 +160,17 @@
     .nav_page{
         gap: 10px;
     }
+
+    .nav_catalog{
+        gap: 10px;  
+    }
     
 }
 
-@media(max-width: 736px){
+/* @media(max-width: 790px){
+    
+} */
+@media(max-width: 790px){
     .basket{
        display: none;
     }
@@ -189,6 +220,7 @@
     }
 
     .nav_a a{
+        transition: 0.5s;
         width: 70%;
         font-weight: 500;
         font-size: 40px;
@@ -246,7 +278,21 @@
 
 @media(max-width: 410px){
     .nav_a a{
+        transition: 0.5s;
+        font-size: 20px;
+    }
+
+    .nav_a a .basket_link p{
+        width: 20px;
+        height: 20px;
         font-size: 16px;
+        top: -10px;
+        left: -7px;
+    }
+
+    .nav_a a .basket_link .icon{
+        width: 20px;
+        height: 20px;
     }
 }
 

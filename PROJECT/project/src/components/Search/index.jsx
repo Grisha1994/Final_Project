@@ -5,52 +5,50 @@ import { useDispatch, useSelector} from 'react-redux';
 import { discont_item, filterAction, priceAction, sortAction } from '../../store/slice/productsSlice';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
-export default function Search() {
+export default function Search({visible}) {
 
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    const products = useSelector(({products}) => products);
+  const products = useSelector(({products}) => products);
 
-    const [priceFilter, setPriceFilter] = useLocalStorage('priceFilter',  {min: 0, max: Infinity})
+  const [priceFilter, setPriceFilter] = useLocalStorage('priceFilter',  {min: 0, max: Infinity})
 
-    useEffect(() => {
-        priceFilter.max = priceFilter.max ?? Infinity;
-        dispatch(priceAction(priceFilter));
-      }, [dispatch, priceFilter, products]);
+  useEffect(() => {
+    priceFilter.max = priceFilter.max ?? Infinity;
+    dispatch(priceAction(priceFilter));
+  }, [dispatch, priceFilter, products]);
 
-      const [wordFilter, setWordFilter] = useLocalStorage('wordFilter', '');
+  const [wordFilter, setWordFilter] = useLocalStorage('wordFilter', '');
 
-      useEffect(() => {
-        dispatch(filterAction(wordFilter));
-      }, [wordFilter, dispatch, products]);
+  useEffect(() => {
+    dispatch(filterAction(wordFilter));
+  }, [wordFilter, dispatch, products]);
 
-      const [checkboxFilter, setCheckboxFilter] = useLocalStorage('checkboxFilter', false);
+  const [checkboxFilter, setCheckboxFilter] = useLocalStorage('checkboxFilter', false);
 
-      useEffect(() => {
-        dispatch(discont_item(checkboxFilter));
-      }, [checkboxFilter, dispatch, products]);
+  useEffect(() => {
+    dispatch(discont_item(checkboxFilter));
+  }, [checkboxFilter, dispatch, products]);
 
+  const [optionValue, setOptionValue] = useLocalStorage('optionValue', {value: "default"});
 
-        const [optionValue, setOptionValue] = useLocalStorage('optionValue', {value: "default"});
+  useEffect(() => {
+    dispatch(sortAction(optionValue));
+  }, [optionValue, dispatch, products]);
 
-        useEffect(() => {
-            dispatch(sortAction(optionValue));
-        }, [optionValue, dispatch, products]);
+  const cleareFilters = () => {
+    setPriceFilter({min: 0, max: Infinity});
+    setWordFilter('');
+    setCheckboxFilter(false);
+    setOptionValue({value: "default"})
+  }
 
-        const cleareFilters = () => {
-          setPriceFilter({min: 0, max: Infinity});
-          setWordFilter('');
-          setCheckboxFilter(false);
-          setOptionValue({value: "default"})
-
-        }
-
-    const sortOptions = [
-        {id:1, value: 'default', label: 'default'},
-        {id:2, value: 'increasing', label: 'sort increasing'},
-        {id:3, value: 'descending', label: 'sort descending'},
-        {id:4, value: 'title', label: 'name'},
-      ]
+  const sortOptions = [
+    {id:1, value: 'default', label: 'default'},
+    {id:2, value: 'increasing', label: 'sort increasing'},
+    {id:3, value: 'descending', label: 'sort descending'},
+    {id:4, value: 'title', label: 'name'},
+  ]
 
   return (
     <div className={s.container}>
@@ -69,20 +67,24 @@ export default function Search() {
             type="number" placeholder='to'
             onChange={({target}) => setPriceFilter({...priceFilter, max: +(target.value || Infinity)} )}/>
         </div>
-        <div className={s.search_sale}>
+        <div className={visible ? s.search_sale : s.active} >
             <p>Discounted items</p>
             <Checkbox checked={checkboxFilter} onChange={({target}) => setCheckboxFilter(target.checked)} />
         </div>
         <div className={s.search_option}>
             <p>Sorted</p>
-            <select onChange={({target}) => setOptionValue({...optionValue, value: target.value})} className={s.select}>
-            {
-              sortOptions.map(({id, value, label}) => 
-              <option selected={optionValue.value === value} key={id} value={value}>{label}</option>
-              )
-            }
+            <select
+                value={optionValue.value} // Используйте value вместо selected
+                onChange={({ target }) => setOptionValue({ ...optionValue, value: target.value })}
+                className={s.select}
+              >
+                {sortOptions.map(({ id, value, label }) => (
+                    <option key={id} value={value}>
+                        {label}
+                    </option>
+                ))}
             </select>
-        </div>  
+        </div> 
         <button onClick={cleareFilters}>Сlean filters</button>      
     </div>
   )

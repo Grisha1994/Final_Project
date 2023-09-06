@@ -16,7 +16,6 @@
     transition: 0.5s;    
 }
 
-
 .title{
     display: flex;
     flex-direction: column;
@@ -33,6 +32,18 @@
     color: #2D2D2D;
     font-weight: 700;
     font-size: 25px;  
+}
+
+.active .btn{
+    color: #2D2D2D;
+}
+
+.btn:hover{
+    background: rgb(219, 252, 217);
+    box-shadow:
+    0.3em 0.3em 1em rgb(64, 123, 61),
+    0 0 0 2px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.5);
 }
 
 @media(max-width: 736px){

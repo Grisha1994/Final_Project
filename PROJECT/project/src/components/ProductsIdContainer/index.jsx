@@ -1,8 +1,6 @@
 import React from 'react'
 
-
 export default function ProductsIdContainer() {
-
   const productId = useSelector(({products}) => products.list)
 
   return (

@@ -6,6 +6,11 @@
     margin-bottom: 80px;
 }
 
+.catalog h2{
+    font-size: 40px;
+    font-weight: 700;
+}
+
 @media(max-width: 1470px){
     .container{
         padding:0 20px ;

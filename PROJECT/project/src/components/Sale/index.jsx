@@ -4,15 +4,8 @@ import s from './style.module.css'
 import Container from '../UI/Container'
 import Products from '../Products'
 import { discont_item, filterAction, priceAction, sortAction } from '../../store/slice/productsSlice'
-// import { fetchProducts } from '../../store/slice/productsSlice'
 
 export default function Sale() {
-
-    // const dispatch = useDispatch();
-
-    // useEffect(() => {
-    //   dispatch(fetchProducts());
-    // }, [dispatch])
 
     const products = useSelector(({products}) => products.list)
     const filteredSale = products.filter(item => item.discont_price !== null).slice(0,4)

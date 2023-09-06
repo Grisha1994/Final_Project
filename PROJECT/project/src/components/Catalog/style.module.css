@@ -22,6 +22,17 @@
     color:  #8B8B8B;
     font-size: 12px;
     font-weight: 700;
+    
+}
+
+.active .btn:hover{
+    box-shadow:
+    0.3em 0.3em 1em rgb(64, 123, 61),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.5);
+}
+
+.btn:hover{
+    font-size: 16px;
     box-shadow:
     0.3em 0.3em 1em rgba(0, 0, 0, 0.5);
 }
@@ -45,6 +56,10 @@
     .btn{
         width: 162px;
         text-align: center;
+    }
+
+    .btn:hover{
+        font-size: 12px;
     }
 }
 

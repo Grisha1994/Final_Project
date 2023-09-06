@@ -6,9 +6,7 @@ import Search from '../Search'
 import Products from '../Products'
 
 export default function ProductsContainer() {
-
   const products = useSelector(({ products }) => products.list)
-  // console.log(products);
  
   return (
     <section>
@@ -16,8 +14,7 @@ export default function ProductsContainer() {
         <div className={s.title}>
           <h2>All products</h2>
         </div>
-        
-        <Search />
+        <Search visible={true}/>
         <Products products={products} />
       </Container>
     </section>

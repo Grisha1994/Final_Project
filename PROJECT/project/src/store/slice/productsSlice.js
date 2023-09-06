@@ -1,29 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-// const myConsole = (data) => {
-//     const stateStringify = JSON.stringify(data);
-//     console.log(JSON.parse(stateStringify));
-// };
-
 export const fetchProducts = createAsyncThunk(
     'products/fetchProducts',
-    async () => {
-        // const url = id ? `http://127.0.0.1:3333/products/${id}` : 'http://127.0.0.1:3333/products/all'
-        const res = await fetch('http://127.0.0.1:3333/products/all')
-        const data = await res.json()
-        return data
-    }
-)
-
-export const fetchProductsID = createAsyncThunk(
-    'products/fetchProductsID',
     async (id) => {
-        const res = await fetch(`http://127.0.0.1:3333/products/${id}`)
+        const url = id ? `http://127.0.0.1:3333/products/${id}` : 'http://127.0.0.1:3333/products/all'
+        const res = await fetch(url)
         const data = await res.json()
         return data
     }
 )
-
 
 export const fetchProductsCategoryID = createAsyncThunk(
     'products/fetchProductsCategoryID',
@@ -33,16 +18,6 @@ export const fetchProductsCategoryID = createAsyncThunk(
         return data
     }
 )
-// export const fetchProductID = createAsyncThunk(
-//     'products/fetchProductID',
-//     async (id) => {
-//         const url = `http://127.0.0.1:3333/products/${id}`
-//         const res = await fetch(url)
-//         const data = await res.json()
-//         return data
-//     }
-// )
-
 
 const initialState = {
     category: {},
@@ -55,28 +30,24 @@ export const productsSlice = createSlice({
     initialState,
     reducers: {
         priceAction(state, {payload}){
-            // console.log(payload);
             const {min, max} = payload;
 
             state.list.forEach(el => {
                 const fixedPrice = el.discont_price ?? el.price;
                 el.show.price = fixedPrice >= min && fixedPrice <= max;
            })
-        //    myConsole(state);
         },
         sortAction(state, {payload}){
-            // console.log(payload);
             const {value} = payload;
             if(value === 'default'){
                 state.list.sort((a,b) => a.id - b.id)
             }else if(value === 'increasing'){
-                state.list.sort((a,b) => a.price - b.price)
+                state.list.sort((a,b) => (a.discont_price ?? a.price) - (b.discont_price ?? b.price))
             }else  if(value === 'descending'){
-                    state.list.sort((a,b) => b.price - a.price)
+                    state.list.sort((a,b) => (b.discont_price ?? b.price) - (a.discont_price ?? a.price))
             }else  if(value === 'title'){
                 state.list.sort((a,b) => a.title.localeCompare(b.title))
             }
-            // myConsole(state);
         },
 
         filterAction(state, {payload}){
@@ -86,10 +57,7 @@ export const productsSlice = createSlice({
         },
 
         discont_item(state, {payload}){
-            // console.log(payload);
             state.list.forEach(item => {item.show.discont = !payload || item.discont_price !== null})
-        
-            // myConsole(state);
         },
     
         
@@ -110,22 +78,6 @@ export const productsSlice = createSlice({
             .addCase(fetchProducts.rejected, (state) => {
                 state.status = 'rejected'
             })
-
-
-            .addCase(fetchProductsID.pending, (state) => {
-                state.status = 'loding'
-            })
-            .addCase(fetchProductsID.fulfilled, (state, {payload}) => {
-                state.status = 'ready';
-                state.list = payload.map((item) => ({
-                    ...item,
-                    show: { search: true, price: true, discont: true },
-                }));
-            })
-            .addCase(fetchProductsID.rejected, (state) => {
-                state.status = 'rejected'
-            })
-
 
             .addCase(fetchProductsCategoryID.pending, (state) => {
                 state.status = 'loding'

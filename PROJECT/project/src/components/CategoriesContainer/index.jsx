@@ -5,7 +5,6 @@ import Container from '../UI/Container';
 import s from './style.module.css'
 
 export default function CategoriesContainer() {
-
     const data = useSelector(({ categories }) => categories.list)
 
     return (

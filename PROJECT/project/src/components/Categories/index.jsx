@@ -9,12 +9,8 @@ export default function Categories({categories}) {
 
   const state = useSelector(({ categories }) => categories)
 
-  // console.log('категории', categories);
   return (
     <div className={s.catalog_categories}>
-        {/* {
-            categories.map(item => <CategoriesItem key={item.id} {...item} />)
-        } */}
         {
             state.status === 'loding'
             ?<Loading/>

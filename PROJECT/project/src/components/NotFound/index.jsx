@@ -3,7 +3,7 @@ import img from '../media/error.png'
 import Container from '../UI/Container'
 import s from './style.module.css'
 
-export default function index() {
+export default function NotFound() {
   return (
     <Container className={s.container}>
       <img src={img} alt="error" />

@@ -1,14 +1,10 @@
 .container{
-    background: linear-gradient(223deg, #393 0%, #006300 100%);
+    background: linear-gradient(to left, #000000 0%, #00cc66 100%);
 }
 
 .discount{
-    /* display: flex;
-    align-items: center; */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    /* gap: 200px; */
-    
 }
 
 .discount img{
@@ -45,10 +41,10 @@
 .discount_get{
     display: flex;
     flex-direction: column;
-    gap: 30px;
 }
 
 .discount_get input{
+    margin-bottom: 30px;
     width: 473px;
     height: 75px;
     border-radius: 25px;
@@ -65,13 +61,18 @@
     border: 2px solid #FFF;
     background: linear-gradient(223deg, #393 0%, #006300 100%);
     cursor: pointer;
-
     color: #FFF;
     font-size: 28px;
     font-weight: 700;
     letter-spacing: 0.862px;
 }
 
+.error_text{
+    color: rgb(250, 139, 139);
+    text-align: end;
+    font-size: 20px;
+    padding-bottom: 10px;
+  }
 
 @media(max-width: 1200px){
     .discount img{
@@ -135,4 +136,9 @@
         border-radius: 10px;
         font-size: 28px;
     }
+
+    .error_text{
+        font-size: 16px;
+        padding-bottom: 10px;
+      }
 }
